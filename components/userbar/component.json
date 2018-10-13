@@ -1,0 +1,9 @@
+{
+    "name": "userbar",
+    "version": "1.0.0",
+    "dependencies": {
+    },
+    "templates": {
+        "userbar": "userbar.tpl"
+    }
+}

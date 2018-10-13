@@ -1,0 +1,7 @@
+{
+    "name": "dropdown",
+    "version": "1.0.0",
+    "templates": {
+        "dropdown": "dropdown.tpl"
+    }
+}

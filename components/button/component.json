@@ -1,0 +1,10 @@
+{
+    "name": "button",
+    "version": "1.0.0",
+    "templates": {
+        "button": "button.tpl",
+        "group":"group.tpl",
+        "toolbar":"toolbar.tpl",
+        "toggle":"toggle.tpl"
+    }
+}
