@@ -10,29 +10,6 @@
  
 {component_define_params params=[ 'items', 'classes', 'attributes' ]}
 
-{function bmods bmods=""}
-    {strip}
-
-    {if $bg}
-        {"bg-{$bg} "}
-    {/if}
-
-    {if $bmods}
-        {cmods name=$component mods=$bmods delimiter="-"}
-    {else}
-        {cmods name=$component mods="secondary" delimiter="-"}
-    {/if}       
-    
-    {if $active}
-        {"active "}
-    {/if} 
-    
-    {if $disabled}
-        {"disabled "}
-    {/if}
-    {/strip}
-{/function}
-
 {block 'button_toggle_content'}
     <div class="btn-group btn-group-toggle {$classes}" {cattr list=$attributes} data-toggle="buttons">
         {foreach $items as $item}

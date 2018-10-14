@@ -25,5 +25,12 @@
                 <lang name="default">default</lang>
             </description>
         </item>
+        <item>
+            <value>light</value>
+            <description>
+                <lang name="ru">светлая</lang>
+                <lang name="default">light</lang>
+            </description>
+        </item>
     </themes>
 </skin>

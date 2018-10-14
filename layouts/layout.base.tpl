@@ -54,7 +54,7 @@
      * Основная навигация
      *}
     {block 'nav_main'}
-        {component 'navbar' 
+        {*component 'navbar' 
             brand=[  text => Config::Get('view.name')]
             nav = {component 'nav'
                 component = 'navbar'
@@ -65,7 +65,7 @@
             }
             content='navbar' 
             bmods="{$themeColor} expand-{Config::Get('view.grid.breakpoint')}" 
-            bg=$themeBg}
+            bg=$themeBg*}
         
     {/block}
     
@@ -112,14 +112,72 @@
                             </div>
                         {/if}
                     {/if}
-                    {component 'alert' text='text' title="Title" bmods='success' dismissible=true animate=1}
-                    {component 'badge' text="badge" bmods="dark"}
-                    {component 'breadcrumb' items=[[text=>"1", url => '#1'], [text=>"2", url => '#2']] bmods="warning"}
-                    {component 'button' url="#gg" bmods="outline-warning lg" text="warning"}
-                    {component 'button.toggle' items=[
+                    {component 'bs-alert' text='text' title="Title" bmods='success' dismissible=true animate=1}
+                    {component 'bs-badge' text="badge" bmods="dark"}
+                    {component 'bs-breadcrumb' items=[[text=>"1", url => '#1'], [text=>"2", url => '#2']] bmods="warning"}
+                    {component 'bs-button' bmods="outline-warning lg" text="warning"}
+                    {component 'bs-button.toggle' items=[
                         [text=>"1", url => '#1', bmods=>"success"], 
                         [text=>"2", url => '#2', bmods=>"secondary"]] 
                     }
+                    {component 'bs-button.group' bmods="lg" classes="m-1" items=[
+                        [text=>"1", url => '#1', bmods=>"success"], 
+                        [text=>"2", url => '#2', bmods=>"secondary"],
+                        [text=>"3", url => '#3', bmods=>"primary"]] 
+                    }<br>
+                    {component 'bs-button.toolbar' groups=[
+                        [
+                            classes=>"mr-1",
+                            items => [
+                                [text=>"1", url => '#1', bmods=>"success"], 
+                                [text=>"2", url => '#2', bmods=>"secondary"],
+                                [text=>"3", url => '#3', bmods=>"primary"]
+                            ]
+                        ],
+                        [
+                            classes=>"mr-2",
+                            items => [
+                                [text=>"4", url => '#1', bmods=>"success"], 
+                                [text=>"5", url => '#2', bmods=>"secondary"],
+                                [text=>"6", url => '#3', bmods=>"primary"]
+                            ]
+                        ],
+                        {component 'bs-button.group' classes="mr-1" items= [
+                            [text=>"6", url => '#1',   bmods=>"success"], 
+                            [text=>"7", url => '#2', bmods=>"secondary"],
+                            [text=>"8", url => '#3', bmods=>"primary"]
+                        ]}
+                    ]
+                    }<br>
+                    {component 'bs-button.group'
+                        items=[
+                            [text=>"1", url => '#1', bmods=>"success"], 
+                            [text=>"2", url => '#2', bmods=>"secondary"],
+                            {component 'bs-button.group'  items=[
+                                    [text=>"bgroup", url => '#1', bmods=>"success"]
+                                ]
+                            }
+                        ] 
+                    }<br>
+                    {component 'bs-dropdown'
+                        text="Drop"
+                        items=[
+                            [text=>"1", url => '#1'], 
+                            [text=>"2", url => '#2']
+                        ] 
+                    }<br>
+                    {component 'bs-dropdown'
+                        buttons = [
+                            [text=>"bt1", url => '#1', bmods=>"success"], 
+                            [text=>"bt2", url => '#2', bmods=>"secondary"]
+                        ]
+                        bmods="lg"
+                        toggler=[ split=>true]
+                        items=[
+                            [text=>"1", url => '#1'], 
+                            [text=>"2", url => '#2']
+                        ] 
+                    }<br>
                     {* Системные сообщения *}
                     {if $layoutShowSystemMessages}
                         {if $aMsgError}

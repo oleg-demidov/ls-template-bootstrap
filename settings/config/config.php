@@ -24,7 +24,12 @@ $config['view']['bs_themes'] = [
     'default' => [
         'color' => 'light',
         'bg' => 'light'
-    ]
+    ],
+    'light' => [
+        'color' => 'light',
+        'bg' => 'light'
+    ],
+
 ];
 
 // Подключение темы
