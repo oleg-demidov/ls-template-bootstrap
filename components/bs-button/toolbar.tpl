@@ -11,13 +11,17 @@
 {block 'tollbar_options'}{/block}
 
 {block 'tollbar_content'}
+    {strip}
     <div class="btn-toolbar {$classes}" {cattr list=$attributes} role="toolbar" >
         {foreach $groups as $item}
+            {strip}
             {if is_array($item)}
                 {component 'bs-button.group' params=$item}
             {else}
                 {$item}
-            {/if}            
+            {/if} 
+            {/strip}
         {/foreach}
     </div>   
+    {/strip}
 {/block}

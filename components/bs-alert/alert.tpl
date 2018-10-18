@@ -17,27 +17,6 @@
 
 {component_define_params params=[ 'title', 'text', 'visible', 'dismissible', 'animate', 'bmods', 'bg', 'classes', 'attributes' ]}
 
-{function bmods}
-    {strip}
-
-    {if $bg}
-        {"bg-{$bg} "}
-    {/if}
-
-    {if $bmods}
-        {cmods name=$component mods=$bmods delimiter="-"}
-    {/if}      
-    
-    {if $dismissible}
-        {"{$component}-dismissible "}
-    {/if} 
-    
-    {if $animate}
-        {"fade show "}
-    {/if}
-    {/strip}
-{/function}
-
 {* Smarty-блок для изменения опций *}
 {block 'alert_options'}
 {/block}

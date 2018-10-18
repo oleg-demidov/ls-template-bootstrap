@@ -1,70 +1,31 @@
 {**
- * Навигация
- *
- * @param string  $bmods
- * @param string  $classes
- * @param array   $attributes
- * @param string  $color
- * @param string  $bg
- * @param string  $tag
+ * Bootstrap function
+ * 
  *}
 
-{function bootstrap_mods bmods=""}
-    {strip}
-        {* Моды *}
-        {$aBmods = " "|explode:{$bmods|trim}}
-        {foreach $aBmods as $mod}
-            {if {$mod|trim}}
-                {$str = "{$component}-{$mod} "}{$str}
-            {/if}
-        {/foreach}
-    {/strip}
-{/function}
+{function bmods}{strip}
 
-{function bootstrap_param params="" name=""}
-    {strip}
-    {$aParams = " "|explode:{$params|trim}}
-    
-    {/strip}
-{/function}
-
-{function bootstrap_params}
-    {strip}
-    {$aParams=[]}
-    
-    {* Фон *}
     {if $bg}
-        {$aParams[] = [str => $bg, name => 'bg']}
+        {"bg-{$bg} "}
     {/if}
     
-    {* Флекс *}
-    {if $flex}
-        {$aParams[] = [str => $flex, name => 'flex']}
+    {if $textMod}
+        {"text-{$textMod} "}
     {/if}
     
-    {foreach $aParams as $param}
-        {$aCodes = " "|explode:{$param.str|trim}}
-        {foreach $aCodes as $code}
-            {if {$code|trim}}
-                {$str = "{$param.name}-{$code} "}{$str}
-            {/if}
-        {/foreach}
-    {/foreach}
-    {/strip}
-{/function}
+    {if $border}
+        {"border-{$border} "}
+    {/if}
+
+    {if $bmods}
+        {cmods name=$component mods=$bmods delimiter="-"}
+    {/if}      
     
-{component_define_params params=[ 'bmods', 'classes', 'attributes', 'color', 'bg', 'tag', 'content', 'component' ]}
-
-{* Smarty-блок для изменения опций *}
-{block 'bootstrap_options'}{/block}
-
-
-
-{block 'bootstrap_component'}
-    {strip}
-    <{$tag} class="{$component} {$classes} {bootstrap_mods bmods=$bmods} {bootstrap_params}" {cattr list=$attributes}>
-        {block 'bootstrap_content'}{$content}{/block}
-    </{$tag}>
-    {/strip}
-{/block}
-
+    {if $dismissible}
+        {"{$component}-dismissible "}
+    {/if} 
+    
+    {if $animate}
+        {"fade show "}
+    {/if}
+{/strip}{/function}

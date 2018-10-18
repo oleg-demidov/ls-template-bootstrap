@@ -10,22 +10,9 @@
 
 {component_define_params params=[ 'items', 'classes', 'attributes', 'bmods', 'bg' ]}
 
-{function bmods}
-    {strip}
-
-    {if $bg}
-        {"bg-{$bg} "}
-    {/if}
-
-    {if $bmods}
-        {cmods name=$component mods=$bmods delimiter="-"}
-    {/if}
-    
-    {/strip}
-{/function}
 {block 'button_group_options'}{/block}
 
-{block 'button_group_content'}
+{block 'button_group_content'}{strip}
     <div class="btn-group {$classes} {bmods bmods=$bmods}" {cattr list=$attributes} role="group" >
         {foreach $items as $item}
             {if is_array($item)}
@@ -34,5 +21,5 @@
                 {$item}
             {/if} 
         {/foreach}
-    </div>   
-{/block}
+    </div>
+{/strip}{/block}

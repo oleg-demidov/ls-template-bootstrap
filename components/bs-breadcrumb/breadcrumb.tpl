@@ -14,19 +14,6 @@
 
 {component_define_params params=[ 'title', 'text',  'bmods', 'items', 'classes', 'attributes' ]}
 
-{function bmods}
-    {strip}
-
-    {if $bg}
-        {"bg-{$bg} "}
-    {/if}
-
-    {if $bmods}
-        {cmods name=$component mods=$bmods delimiter="-"}
-    {/if} 
-    {/strip}
-{/function}
-
 {* Smarty-блок для изменения опций *}
 {block 'breadcrumb_options'}
 {/block}

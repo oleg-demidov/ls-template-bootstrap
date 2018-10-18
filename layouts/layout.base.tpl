@@ -9,6 +9,8 @@
 
 {extends 'component@layout.layout'}
 
+
+
 {block 'layout_options' append}
     {$layoutShowSidebar = $layoutShowSidebar|default:true}
     {$layoutShowSystemMessages = $layoutShowSystemMessages|default:true}
@@ -30,6 +32,14 @@
 {/block}
 
 {block 'layout_body'}
+    
+    {*
+     *  Это здесь по причине, что
+     *  невозможно совершить вложение компонентов 
+     *  наследуемых от одного компонента
+     *}
+    {component "bootstrap"}
+    
     {hook run='layout_body_begin'}
 
     {**
@@ -161,6 +171,7 @@
                     }<br>
                     {component 'bs-dropdown'
                         text="Drop"
+                        toggler=[ offset=>"10,20"]
                         items=[
                             [text=>"1", url => '#1'], 
                             [text=>"2", url => '#2']
@@ -178,6 +189,130 @@
                             [text=>"2", url => '#2']
                         ] 
                     }<br>
+                    {component 'bs-dropdown'
+                        direction="up"
+                        text="Dropup"
+                        items=[
+                            '<h4 class="dropdown-header">Header</h4>',
+                            [text=>"Span"],
+                            [text=>"1", url => '#1'],
+                            [text=>"-"],  
+                            [text=>"2", url => '#2']
+                        ] 
+                    }<br>
+                    {component 'bs-card' bg="success" text="white" content=[
+                        [   
+                            type => 'body',
+                            content => [
+                                [type=>"title", content=>'444']
+                            ]
+                        ]
+                    ]}<br>
+                    {component 'bs-carousel' classes="slide" indicators=true controls=true  items=[
+                        [ src => 'https://i.ytimg.com/vi/bZwMrjgYatA/hqdefault.jpg', alt => 'sdsd'],
+                        [ src => 'https://i.ytimg.com/vi/bZwMrjgYatA/hqdefault.jpg', alt => 'sdsd']
+                    ]}<br>
+                    
+                    {component 'bs-collapse' text="Коллапс" content="fgdrgdfgdf"}<br>
+                    
+                    {component 'bs-collapse.accordion' items=[
+                        [   
+                            text => '1111',
+                            content => "1111111111111111111111111"
+                        ],
+                        [   
+                            bmods => 'primary',
+                            textMod => "white",
+                            text => '2222',
+                            content => "22222222222222222222"
+                        ]
+                    ]}<br>
+                    
+                    {component "bs-card" content=[  [type=>"body", content=>{component 'bs-form'  items=[
+                            [   
+                                type => "email",
+                                label => 'Email',
+                                placeholder => "email@email",
+                                desc => "lkdjnkljndlskjn",
+                                value => "eerer",
+                                required => true,
+                                validateError => "Ошибка email",
+                                validateSuccess => "Правильный email"
+                            ],
+                            [   
+                                type => "text",
+                                label => 'Text',
+                                placeholder => "текст",
+                                desc => "Описание текста",
+                                readonly => true,
+                                size => "lg"
+                            ],
+                            [   
+                                type => "range",
+                                label => 'Диапазон',
+                                desc => "Описание Диапазон",
+                                custom => true
+                            ],
+                            [   
+                                type => "checkbox",
+                                label => 'Флажок',
+                                custom => true,
+                                size => "lg"
+                            ],
+                            [   
+                                type => "checkbox",
+                                label => '1',
+                                radio => true,
+                                checked => true,
+                                name => "radio1",
+                                custom => true
+                            ],
+                            [   
+                                type => "checkbox",
+                                label => '2',
+                                radio => true,
+                                name => "radio1",
+                                custom => true
+                            ],
+                            {component "bs-form.group" content=[
+                                {component "bs-form.checkbox" params=[   
+                                    type => "checkbox",
+                                    label => '1',
+                                    inline => true,
+                                    radio => true,
+                                    checked => true,
+                                    name => "radio2"
+                                ]},
+                                {component "bs-form.checkbox" params=[   
+                                    type => "checkbox",
+                                    label => '2',
+                                    inline => true,
+                                    radio => true,
+                                    name => "radio2"
+                                ]}
+                            ]},
+                            [   
+                                type => "select",
+                                label => 'Select',
+                                name => "sel",
+                                items => [
+                                    [text => "First", value => '1'],
+                                    [text => "second", value => '2']
+                                ],
+                                selected => '2',
+                                custom => true,
+                                size => "sm"
+                            ],
+                            [   
+                                type => "file",
+                                label => 'File',
+                                name => "filesel",
+                                custom => true,
+                                size => "sm"
+                            ],
+                            {component "bs-button" text="Отправить" type="submit"}
+                        ]}
+                    ]]}<br>
                     {* Системные сообщения *}
                     {if $layoutShowSystemMessages}
                         {if $aMsgError}

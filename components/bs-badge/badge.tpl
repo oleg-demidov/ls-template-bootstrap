@@ -13,16 +13,6 @@
 
 {component_define_params params=[  'text',  'bmods', 'classes', 'attributes' ]}
 
-{function bmods}
-    {strip}
-
-    {if $bmods}
-        {cmods name=$component mods=$bmods delimiter="-"}
-    {/if}      
-    
-    {/strip}
-{/function}
-
 {* Smarty-блок для изменения опций *}
 {block 'badge_options'}
 {/block}
