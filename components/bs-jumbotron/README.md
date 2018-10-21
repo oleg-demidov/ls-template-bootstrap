@@ -1,0 +1,3 @@
+# Компонент jumbotron
+
+jumbotron

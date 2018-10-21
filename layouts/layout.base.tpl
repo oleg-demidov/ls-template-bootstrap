@@ -313,6 +313,9 @@
                             {component "bs-button" text="Отправить" type="submit"}
                         ]}
                     ]]}<br>
+                    {component "bs-jumbotron" title="Title" content="Contemt"}<br>
+                    {component "bs-button" text="Modal" bmods="success" attributes=["data-toggle"=>"modal", "data-target"=>"#exampleModal"]}
+                    {component "bs-modal" header="Title" content="Contemt" id="exampleModal"}<br>
                     {* Системные сообщения *}
                     {if $layoutShowSystemMessages}
                         {if $aMsgError}
