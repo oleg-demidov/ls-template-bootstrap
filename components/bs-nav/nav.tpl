@@ -1,37 +1,44 @@
 {**
  * Навигация
  *
- * @param string  $bmods
+ * @param array     $items
+ * @param string    $activeItem
+ * @param string    $justify        Горизонтальное выравнивание
+ * @param bool      $vertical       
  * 
  *}
+{$component = "nav"}
+{component_define_params params=[ 'items', 'activeItem', 'justify', 'vertical', 'isRoot' ]}
 
-{extends "component@bootstrap"}
+{if $justify}
+    {$classes = "{$classes} justify-content-{$justify}"}
+{/if}
+{if $vertical}
+    {$classes = "{$classes} flex-column"}
+{/if}
 
-{component_define_params params=[ 'items' ]}
-
-{block 'bootstrap_options'}
-    {$tag = {$tag|default:"nav"}}
-    {$component = {$component|default:"nav"}}
-{/block}
-
-
-
-{block 'bootstrap_content' prepend}
-    {foreach $items as $item}
-        {$isActive = (($activeItem and $activeItem == $item.name) or $item.active) }
-        <li class="nav-item {$item.classes}">
-            {if $item.content or !is_array($item)}
-                {if !is_array($item)}
-                    {$item}
-                {else}
-                    {$item.content}
-                {/if}
+{block 'nav_content'}
+    <ul class="{$component} {bmods} {$classes}" {cattr list=$attributes}>
+        {foreach $items as $item}
+            {$isActive = ($activeItem and $item.name == $activeItem) or $item.active}
+            {if $item.menu}
+                {component "bs-dropdown" params=$item.menu tag="li" 
+                    toggler={component "bs-button" 
+                        com="nav-link"
+                        classes="dropdown-toggle"
+                        url="#"
+                        text=$item.menu.text
+                        attributes=[
+                            "data-toggle"=>"dropdown", href=>"#", role=>"button", "aria-haspopup"=>"true", "aria-expanded"=>"false"
+                        ]
+                    }
+                }
             {else}
-                <a class="nav-link {if $isActive}active{/if}
-                    {if $item.disabled}disabled{/if}" href="{$item.url}">{$item.text}</a>
-            {/if}
-            
-        </li>
-    {/foreach}
+                <li class="nav-item">
+                    <a class="nav-link {if $isActive}active{/if} {if $item.disabled}disabled{/if}" href="{$item.url}">{$item.text}</a>
+                </li>
+            {/if}            
+        {/foreach}
+    </ul>
 {/block}
 

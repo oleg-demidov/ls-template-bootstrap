@@ -1,7 +1,7 @@
 {
-    "name": "navbar",
+    "name": "bs-nav",
     "version": "1.0.0",
     "templates": {
-        "navbar": "navbar.tpl"
+        "bs-nav": "nav.tpl"
     }
 }

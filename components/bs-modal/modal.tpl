@@ -8,23 +8,27 @@
  * @param array   $attributes       Список атрибутов основного блока
  * @param string  $content          Контент
  * @param string  $footer           Подвал
+ * @param bool  $centered           По центру страницы
  * 
  *}
 {$component="modal"}
 
-{component_define_params params=[ 'header', 'content', 'footer', 'closeText', 'primaryText', 'html', 'id', 'labelledby', 'effect']}
+{component_define_params params=[ 'header', 'content', 'footer', 'closeText', 'primaryText', 'html', 'id', 'labelledby', 'effect', 'centered']}
 
 {$attributes.id=$id}
 {$attributes.tabindex="-1"}
 {$attributes.role="dialog"}
 {$attributes["aria-labelledby"]=$labelledby}
 {$attributes["aria-hidden"]="true"}
+{if $centered}
+    {$bmods = "{$bmods} dialog-centered"}
+{/if}
 
 {block 'modal_options'}{/block}
 
 {block 'modal_content'}
-    <div class="{$component} {$effect|default:"fade"} {bmods} {$classes}" {cattr list=$attributes}>
-        <div class="modal-dialog" role="document">
+    <div class="{$component} {$effect|default:"fade"}  {$classes}" {cattr list=$attributes}>
+        <div class="modal-dialog {bmods} " role="document">
             <div class="modal-content">
                 {if $header}
                     <div class="modal-header">
@@ -41,14 +45,14 @@
                     </div>
                 {/if}
 
-                {if $footer}
-                    {$footer}
-                {else}
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{$closeText|default:"Close"}</button>
+                <div class="modal-footer">
+                    {if $footer}
+                        {$footer}
+                    {else}
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{$closeText|default:$aLang.common.close}</button>
                         <button type="button" class="btn btn-primary">{$primaryText|default:"Ok"}</button>
-                    </div>
-                {/if}                
+                    {/if}        
+                </div>
             </div>
         </div>
     </div>

@@ -41,7 +41,7 @@ if ($theme) {
 
 $config['view']['bs_theme'] = $config['view']['bs_themes'][$theme];
 
-$config['components'] = ['ls-vendor', 'ls-component','menu'];
+$config['components'] = ['ls-vendor', 'ls-component','menu', 'bs-dropdown'];
 
 /**
  * SEO

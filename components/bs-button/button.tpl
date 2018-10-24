@@ -8,24 +8,30 @@
  * @param array   $attributes       Список атрибутов основного блока
  *}{strip}
  
- {* Название компонента *}
-{$component = "btn"}
 
-{component_define_params params=[ 'text', 'url', 'active', 'disabled' , 'bmods', 'bg', 'classes', 'attributes', 'type', 'value', 'tag' ]}
+
+{component_define_params params=[ 'text', 'url', 'active', 'disabled' , 'bmods', 'bg', 'classes', 'attributes', 
+    'type', 'value', 'tag', 'com', 'popover' ]}
+
+{* Название компонента *}
+{$component = $com|default:"btn"}
+{$tag = $tag|default:"button"}
 
 {block 'button_options'}{/block}
 
 {block 'button_content'}{strip}
     {if $url}
-        <a class="{$component} {bmods} {$classes}" 
+        <a class="{$component} {bmods} {bs_popover popover=$popover} {$classes}" 
            {cattr list=$attributes} {if $disabled}aria-disabled="true"{/if} href="{$url}" role="button">{$text}</a>
     {else}
-        {if {$tag|default:"button"} == "button"}
-            <button type="{$type|default:"button"}" class="{$component} {bmods} {$classes}" {cattr list=$attributes}>
+        {if $tag != "input"}
+            <{$tag} type="{$type|default:"button"}" class="{$component} {bmods} {$classes}" {bs_popover popover=$popover}
+                {cattr list=$attributes}>
                 {$text}
-            </button>
+            </{$tag}>
         {else}
-            <input class="{$component} {bmods} {$classes}" {cattr list=$attributes} type="{$type|default:"button"}" value="{$value}">
+            <input class="{$component} {bmods} {$classes}" {bs_popover popover=$popover} 
+                {cattr list=$attributes} type="{$type|default:"button"}" value="{$value}">
         {/if}
     {/if}    
 {/strip}{/block}{/strip}

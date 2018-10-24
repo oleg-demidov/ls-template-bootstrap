@@ -1,7 +1,7 @@
 {**
  * Выпадаеющее меню
  *
- * @param string   $text            Массив либо строка с текстом уведомления
+ * @param string   $text            Строка с текстом
  * @param string  $bmods="success"  Список модификторов основного блока (через пробел)
  * @param string  $bg="light"       Модификтор фона
  * @param string  $classes          Список классов основного блока (через пробел)
@@ -12,21 +12,24 @@
  *}
 {$component="dropdown"}
 
-{component_define_params params=[ 'items', 'text', 'toggler', 'buttons', 'text', 'bmods', 'bg','classes', 'attributes', 'direction' ]}
+{component_define_params params=[ 'items', 'text', 'toggler', 'buttons', 'bmods', 'bg','classes', 'attributes', 'direction', 'tag', 'isSubmenu']}
 
 {if $buttons}
     {$component="btn-group"}
 {/if}
 
 {if $direction}
-    {$component="btn-group drop{$direction}"}
+    {$component="drop{$direction}"}
 {/if}
 
+{if $isSubmenu}
+    {$component="dropdown-submenu"}
+{/if}
 
 {block 'dropdown_options'}{/block}
 
 {block 'dropdown_content'}
-    <div class="{$component} {$classes}" {cattr list=$attributes}>
+    <{$tag|default:"div"} class="{$component} {$classes}" {cattr list=$attributes}>
         {foreach $buttons as $button}
             {if is_array($button)}
                 {component 'bs-button' params=$button bmods="{$bmods} {$button.bmods}"}
@@ -36,19 +39,7 @@
         {/foreach}
         
         {if $toggler}
-            {if is_array($toggler)}
-                {component 'bs-button' 
-                    params=$toggler 
-                    bmods=$bmods
-                    classes="dropdown-toggle {$toggler.classes} {if $toggler.split}dropdown-toggle-split{/if}"
-                    text="{$toggler.text|default:$text}{if $toggler.split}<span class='sr-only'>Toggle Dropdown</span>{/if}"
-                    attributes=[
-                        "data-toggle"=>"dropdown", "aria-haspopup"=>"true", "aria-expanded"=>"false", "data-offset" => $toggler.offset
-                    ]
-                }
-            {else}
-                {$toggler}
-            {/if}
+            {$toggler}
         {else}
             {component 'bs-button' 
                 bmods=$bmods
@@ -61,27 +52,31 @@
             }
         {/if}
         
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             {foreach $items as $item}
                 {if is_array($item)}
-                    {$tag_item = "span"}
-                    {$classes_item = "dropdown-item-text"}
-                    
-                    {if $item.url}
-                        {$tag_item = "a"}
-                        {$classes_item = "dropdown-item"}
+                    {if $item.menu}
+                        {component "bs-dropdown" 
+                            isSubmenu = true
+                            params=$item.menu 
+                            toggler="<a class='dropdown-item dropdown-toggle' href='#'>{$item.text}</a>"}
+                    {else}
+                        {if $item.url}
+                            <a class="dropdown-item {$item.classes} " href="{$item.url}">{$item.text}</a>
+                        {else}
+                            {if $item.text == "-"}
+                                <div class="dropdown-divider {$item.classes} "></div>
+                            {else}
+                                <span class="dropdown-item-text {$item.classes} ">{$item.text}</span>
+                            {/if}                            
+                        {/if}
                     {/if}
-                    
-                    {if $item.text == "-"}
-                        {$tag_item = "div"}
-                        {$classes_item = "dropdown-divider"}
-                    {/if}
-                    <{$tag_item} class="{$classes_item} {$item.classes}" href="{$item.url}">{$item.text}</{$tag_item}>
                 {else}
                     {$item}
                 {/if}
             {/foreach}
-        </div>
-    </div>
+        </ul>
+    </{$tag|default:"div"}>
+    
 {/block}
 
