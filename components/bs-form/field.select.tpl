@@ -24,7 +24,7 @@
 {/block}
 
 {block name="field_input"}
-    <select class="{$component} {bmods} {$classes}" {cattr list=$attributes}>
+    <select class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes}>
         {foreach $items as $item}
             <option value="{$item.value}"{if $item.value == $selected}selected{/if}>{$item.text}</option>
         {/foreach}

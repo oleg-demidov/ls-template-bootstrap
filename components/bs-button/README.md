@@ -2,7 +2,7 @@
 
 Кнопка
 
-{component 'bs-button' bmods="outline-warning lg" text="warning"}
+{component 'bs-button' bmods="outline-warning lg" text="warning" badge="text"}
 
 {component 'bs-button.toggle' items=[
     [text=>"1", url => '#1', bmods=>"success"], 

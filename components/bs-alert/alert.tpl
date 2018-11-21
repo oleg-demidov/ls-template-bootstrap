@@ -23,7 +23,7 @@
 
 
 {block 'alert_content'}
-    <div class="{$component} {bmods} {$classes}" {cattr list=$attributes} role="alert">
+    <div class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes} role="alert">
         {if $title}
             <h4 class="alert-heading">{$title}</h4>
         {/if}

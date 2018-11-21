@@ -28,7 +28,7 @@
 {/block}
 
 {block name="field_input"}
-    <input type="range" class="{bmods} {$classes}" {cattr list=$attributes} {if $disabled}disabled{/if}>
+    <input type="range" class="{cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes} {if $disabled}disabled{/if}>
 {/block}
     
 

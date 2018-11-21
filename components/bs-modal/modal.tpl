@@ -13,7 +13,7 @@
  *}
 {$component="modal"}
 
-{component_define_params params=[ 'header', 'content', 'footer', 'closeText', 'primaryText', 'html', 'id', 'labelledby', 'effect', 'centered']}
+{component_define_params params=[ 'showFooter', 'header', 'content', 'footer', 'closeText', 'primaryButton', 'html', 'id', 'labelledby', 'effect', 'centered']}
 
 {$attributes.id=$id}
 {$attributes.tabindex="-1"}
@@ -28,7 +28,7 @@
 
 {block 'modal_content'}
     <div class="{$component} {$effect|default:"fade"}  {$classes}" {cattr list=$attributes}>
-        <div class="modal-dialog {bmods} " role="document">
+        <div class="modal-dialog {cmods name=$component mods=$bmods delimiter="-"} " role="document">
             <div class="modal-content">
                 {if $header}
                     <div class="modal-header">
@@ -45,14 +45,19 @@
                     </div>
                 {/if}
 
-                <div class="modal-footer">
+                {if $showFooter}
+
                     {if $footer}
-                        {$footer}
+                        <div class="modal-footer">
+                            {$footer}
+                        </div>
                     {else}
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{$closeText|default:$aLang.common.close}</button>
-                        <button type="button" class="btn btn-primary">{$primaryText|default:"Ok"}</button>
-                    {/if}        
-                </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{$closeText|default:$aLang.common.close}</button>
+                            <button type="button" class="{$primaryButton.classes} btn btn-primary">{$primaryButton.text|default:"Ok"}</button>
+                        </div>
+                    {/if}  
+                {/if}      
             </div>
         </div>
     </div>

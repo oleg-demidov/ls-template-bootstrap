@@ -34,7 +34,7 @@
 {block 'form_options'}{/block}
 
 {block 'form_content'}{strip}
-    <form class="{$component} {bmods} {$classes}" {cattr list=$attributes}>
+    <form class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes}>
         {foreach $items as $item}
             {if is_array($item)}
                 {if $item.type}

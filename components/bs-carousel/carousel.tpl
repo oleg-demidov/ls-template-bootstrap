@@ -20,7 +20,7 @@
 {block 'carousel_options'}{/block}
 
 {block 'carousel_content'}{strip}
-    <div id="{$id}" class="{$component} {bmods} {$classes}" {cattr list=$attributes} data-ride="carousel">
+    <div id="{$id}" class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes} data-ride="carousel">
         {if $indicators}
             <ol class="carousel-indicators">
                 {foreach $items as $key => $item name="carousel_indicators"}

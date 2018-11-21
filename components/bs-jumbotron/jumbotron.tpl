@@ -17,7 +17,7 @@
 {block 'jumbotron_options'}{/block}
 
 {block 'jumbotron_content'}
-    <div class="{$component} {bmods} {$classes}" {cattr list=$attributes}>
+    <div class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes}>
         {if $title}
             <h1 class="display-4">{$title}</h1>
         {/if}

@@ -16,7 +16,7 @@
 {$classes = "custom-{$type}"}
 
 {block 'form_group_content'}
-    <div class="{$component} {bmods} {$classes}" {cattr list=$attributes}>
+    <div class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes}>
         {if is_array($content)}
             {foreach $content as $item}
                 {$item}

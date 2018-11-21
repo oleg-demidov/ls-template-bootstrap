@@ -28,7 +28,7 @@
 {/block}
 
 {block name="field_content"}
-    <input type="{$type}" class="{$component}-input {bmods} {$classes}" {cattr list=$attributes}>
+    <input type="{$type}" class="{$component}-input {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes}>
     {if $label}
         <label class="{$component}-label" for="{$attributes.id}">{$label}</label>
     {/if}

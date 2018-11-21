@@ -22,7 +22,7 @@
 
 {block 'collapse_content'}{strip}
     
-    <div class="{$component} {bmods} {$classes}" {cattr list=$attributes}>
+    <div class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes}>
         {foreach $items as $item}
             {$idCollapse = "collapse{math equation='rand()'}"}
             {$idHeading = "heading{math equation='rand()'}"}

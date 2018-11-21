@@ -27,7 +27,7 @@
     {$tag = "p"}
 {/if}
 
-<{$tag} class="{$component}{if $type}-{$type}{/if}{if $position}-{$position}{/if} {bmods} {$classes}" {cattr list=$attributes}>
+<{$tag} class="{$component}{if $type}-{$type}{/if}{if $position}-{$position}{/if} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes}>
 {if $type != "img"}
     {if is_array($content)}
         {foreach $content as $params}

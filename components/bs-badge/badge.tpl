@@ -19,5 +19,5 @@
 
 
 {block 'badge_content'}
-    <span class="{$component} {bmods} {$classes}" {cattr list=$attributes}>{$text}</span>
+    <span class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {cattr list=$attributes}>{$text}</span>
 {/block}
