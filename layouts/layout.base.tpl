@@ -50,25 +50,25 @@
 
             <div class="col-12 col-xl-10">
                 {component 'bs-navbar' 
-                classes = "bg-dark" 
-                bmods = "expand-lg dark" 
-                brand = Config::Get('view.name')
-                items = [
-                {component "bs-nav" 
-                        itemsClasses="d-flex justify-content-start"
-                        bmods="fill" 
-                        classes="navbar-nav mr-auto" 
-                        hook="main" 
-                        activeItem=$sMenuHeadItemSelect 
-                        items = [
-                            [ 'text' => $aLang.topic.topics,   'url' => {router page='/'},      'name' => 'blog' ],
-                            [ 'text' => $aLang.blog.blogs,     'url' => {router page='blogs'},  'name' => 'blogs' ],
-                            [ 'text' => $aLang.user.users,     'url' => {router page='people'}, 'name' => 'people' ],
-                            [ 'text' => $aLang.activity.title, 'url' => {router page='stream'}, 'name' => 'stream' ]
-                        ]
-                }
-                ]
-                after={component 'userbar'}
+                    classes = "bg-dark" 
+                    bmods = "expand-lg dark" 
+                    brand = Config::Get('view.name')
+                    items = [
+                        {component "bs-nav" 
+                                itemsClasses="d-flex justify-content-start"
+                                bmods="fill" 
+                                classes="navbar-nav mr-auto" 
+                                hook="main" 
+                                activeItem=$sMenuHeadItemSelect 
+                                items = [
+                                    [ 'text' => $aLang.topic.topics,   'url' => {router page='/'},      'name' => 'blog' ],
+                                    [ 'text' => $aLang.blog.blogs,     'url' => {router page='blogs'},  'name' => 'blogs' ],
+                                    [ 'text' => $aLang.user.users,     'url' => {router page='people'}, 'name' => 'people' ],
+                                    [ 'text' => $aLang.activity.title, 'url' => {router page='stream'}, 'name' => 'stream' ]
+                                ]
+                        }
+                    ]
+                    after={component 'userbar'}
                 }
             </div>
             <div class="col-xl-1"></div>

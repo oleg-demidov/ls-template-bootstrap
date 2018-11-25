@@ -14,7 +14,7 @@
 
 <nav class="navbar {$classes} {cmods name=$component mods=$bmods delimiter="-"}" {cattr list=$attributes}>
     {if $brand}
-        <a class="navbar-brand" href="#">{$brand}</a>
+        <a class="navbar-brand" href="{router page="/"}">{$brand}</a>
     {/if}
     
     {$before}

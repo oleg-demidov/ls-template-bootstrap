@@ -27,6 +27,21 @@ jQuery(document).ready(function($){
         return false;
     });
     
+    /*
+     * Tabs
+     */
+    $('.js-nav-tab').on('show.bs.tab', function (e) {
+        if($(e.target).data('url') != undefined){
+            $( $(e.target).attr('href') ).html(
+                '<i class="d-flex justify-content-center mb-3 fa fa-refresh fa-spin"></i>'
+            );
+            ls.ajax.load($(e.target).data('url'), {}, function(response){
+                $( $(e.target).attr('href') ).html(response.sText)
+            }, { showProgress:false })
+        }
+    });
+    
+    
     $('[data-toggle="popover"]').popover();
     $('[data-toggle="tooltip"]').tooltip();
     
@@ -120,7 +135,7 @@ jQuery(document).ready(function($){
     /**
      * Details
      */
-    $('.js-details-default').lsDetails();
+    //$('.js-details-default').lsDetails();
 
 
     /**

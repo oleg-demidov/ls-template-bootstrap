@@ -39,16 +39,16 @@ $config['view']['bs_theme'] = $config['view']['bs_themes'][$theme];
 
 $config['components'] = [
     // Базовые компоненты
-    'css-reset', 'css-helpers', 'typography', 'forms', 'grid', 'ls-vendor', 'ls-core', 'ls-component', 'lightbox', 'avatar', 'slider', 'details', 'alert', 'dropdown', 'block',
-    'nav', 'tooltip', 'tabs', 'modal', 'table', 'text', 'uploader', 'email', 'field', 'pagination', 'editor', 'more', 'crop',
-    'performance', 'toolbar', 'actionbar', 'badge', 'autocomplete', 'icon', 'item', 'highlighter', 'jumbotron', 'notification', 'blankslate', 'confirm',
-
-    // Компоненты LS CMS
-    'favourite', 'vote', 'auth', 'media', 'property', 'photo', 'note', 'user-list-add', 'subscribe', 'content', 'report', 'comment',
-    'toolbar-scrollup', 'toolbar-scrollnav', 'tags-personal', 'search-ajax', 'search', 'sort', 'search-form', 'info-list',
-    'tags', 'userbar', 'admin', 'user', 'wall', 'blog', 'topic', 'poll', 'activity', 'feed', 'talk',
+//     'css-helpers', 'typography', 'forms', 'grid', 'ls-vendor', 'ls-core', 'ls-component', 'lightbox', 'avatar', 'slider', 'details', 'alert', 'dropdown', 'block',
+//    'nav', 'tooltip', 'tabs', 'modal', 'table', 'text', 'uploader', 'email', 'field', 'pagination', 'editor', 'more', 'crop',
+//    'performance', 'toolbar', 'actionbar', 'badge', 'autocomplete', 'icon', 'item', 'highlighter', 'jumbotron', 'notification', 'blankslate', 'confirm',
+//
+//    // Компоненты LS CMS
+//    'favourite', 'vote', 'auth', 'media', 'property', 'photo', 'note', 'user-list-add', 'subscribe', 'content', 'report', 'comment',
+//    'toolbar-scrollup', 'toolbar-scrollnav', 'tags-personal', 'search-ajax', 'search', 'sort', 'search-form', 'info-list',
+//    'tags', 'userbar', 'admin', 'user', 'wall', 'blog', 'topic', 'poll', 'activity', 'feed', 'talk',
     //Компоненты шаблона
-    'ls-vendor', 'ls-component','menu', 'bs-dropdown'
+    'ls-vendor', 'ls-component','menu', 'bs-dropdown', 'notification', 'icon'
 ];
 
 /**

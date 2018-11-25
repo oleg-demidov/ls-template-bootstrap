@@ -13,7 +13,7 @@
  {* Название компонента *}
 {$component = "card"}
 
-{component_define_params params=[ 'bmods', 'bg', 'classes', 'text', 'attributes', 'content', 'type', 'position' ]}
+{component_define_params params=[ 'bmods', 'bg', 'classes', 'text', 'attributes', 'content', 'type', 'position']}
 
 {$tag = "div"}
 
