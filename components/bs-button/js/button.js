@@ -53,6 +53,20 @@
         },
         loaded:function(){
             this.elements.icon.attr('class', this.option('icon_classes') )
+        },
+        
+        active: function(){
+            if(this.element.hasClass('active')){
+                return;
+            }
+            this.element.button('toggle');
+        },
+        
+        deactive:function(){
+            if(!this.element.hasClass('active')){
+                return;
+            }
+            this.element.button('toggle');
         }
     });
 })(jQuery);
