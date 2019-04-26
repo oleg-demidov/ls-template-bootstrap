@@ -6,5 +6,8 @@
         "group":"group.tpl",
         "toolbar":"toolbar.tpl",
         "toggle":"toggle.tpl"
+    },
+    "scripts":{
+        "button-loading":"js/button.js"
     }
 }

@@ -12,7 +12,7 @@
  *}
 {$component="jumbotron"}
 
-{component_define_params params=[ 'title', 'content', 'html' ]}
+{component_define_params params=[ 'title', 'content', 'html', 'bmods' ]}
 
 {block 'jumbotron_options'}{/block}
 

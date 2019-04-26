@@ -33,11 +33,15 @@ $.widget( "livestreet.lsEditor", {
         this.option( 'media', $( '#' + this.element.data('editor-media') || this.option( 'media' ) ) );
 
         // Иниц-ия компонента media (вставка медиа-файлов)
-        this.options.media_options.editor = this.element;
-        this.option( 'media' ).lsMedia( this.option( 'media_options' ) );
+//        this.options.media_options.editor = this.element;
+//        this.option( 'media' ).lsMedia( this.option( 'media_options' ) );
 
         // Иниц-ия редактора определенного типа
         this.element[ this.strategy ]( this.options );
+    },
+    
+    isInitialized: function(){
+        return this.element[ this.strategy ]( 'isInitialized' );
     },
 
     /**

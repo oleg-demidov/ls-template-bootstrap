@@ -13,9 +13,22 @@
  {* Название компонента *}
 {$component = "carousel"}
 
-{component_define_params params=[ 'bmods', 'bg', 'classes', 'attributes', 'items', 'indicators', 'controls' ]}
+{component_define_params params=[ 'bmods', 'bg', 'classes', 'attributes', 'items', 'indicators', 'controls', 'interval' ]}
 
 {$id = "carousel{math equation='rand()'}"}
+
+{if $interval}
+    {$attributes['data-interval'] = $interval}
+{else}
+    {$attributes['data-interval'] = "false"}
+{/if}
+
+{if count($items)<2}
+    {$indicators = false}
+    {$controls = false}
+{/if}
+
+
 
 {block 'carousel_options'}{/block}
 
@@ -35,7 +48,7 @@
         <div class="carousel-inner">
             {foreach $items as $item name="carousel_items"}
                 <div class="carousel-item {if {$smarty.foreach.carousel_items.first}}active{/if}">
-                    <img class="d-block w-100" src="{$item.src}" alt="{$item.alt}">
+                    <a href="{$item.href}" data-lightbox><img class="d-block w-100" src="{$item.src}" alt="{$item.alt}"></a>
                 </div>
             {/foreach}
         </div>

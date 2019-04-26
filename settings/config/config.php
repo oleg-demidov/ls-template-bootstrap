@@ -2,9 +2,8 @@
 
 $config = array();
 
-$config['view']['container']['fluid'] = true;
-
-$config['view']['grid']['breakpoint'] = 'lg';
+$config['view']['grid']['breakpoint'] = 'md';  //граница сворачивания панели блоков  вниз
+$config['view']['grid']['collapse'] = 'sm'; // Граница сворачивания меню
 
 // Подключение скриптов шаблона
 $config['head']['template']['js'] = array(
@@ -39,17 +38,16 @@ $config['view']['bs_theme'] = $config['view']['bs_themes'][$theme];
 
 $config['components'] = [
     // Базовые компоненты
-    'css-reset', 'css-helpers', 'typography', 'forms', 'grid', 'ls-vendor', 'ls-core', 'ls-component', 'lightbox', 'avatar', 'slider', 'details', 'alert', 'dropdown', 'block',
-    'nav', 'tooltip', 'tabs', 'modal', 'table', 'text', 'uploader', 'email', 'field', 'pagination', 'editor', 'more', 'crop',
-    'performance', 'toolbar', 'actionbar', 'badge', 'autocomplete', 'icon', 'item', 'highlighter', 'jumbotron', 'notification', 'blankslate', 'confirm',
+    'ls-vendor', 'ls-core', 'ls-component', 'editor', 'notification', 'performance', 'confirm', 'lightbox',
 
-    // Компоненты LS CMS
-    'favourite', 'vote', 'auth', 'media', 'property', 'photo', 'note', 'user-list-add', 'subscribe', 'content', 'report', 'comment',
-    'toolbar-scrollup', 'toolbar-scrollnav', 'tags-personal', 'search-ajax', 'search', 'sort', 'search-form', 'info-list',
-    'tags', 'userbar', 'admin', 'user', 'wall', 'blog', 'topic', 'poll', 'activity', 'feed', 'talk',
     //Компоненты шаблона
-    'ls-vendor', 'ls-component','menu', 'bs-dropdown'
+    'bs-dropdown', 'bs-form', 'bs-media', 'bs-pagination', 'bs-crop', 'rating', 'bs-nav', 'ajax', 'bs-icon', 'bs-autocomplete', 
+    'bs-popover', 'bs-text', 'bs-button'
 ];
+
+$config['head']['default']['js'] = array(
+    //"https://www.google.com/recaptcha/api.js?render=___module.validate.recaptcha.site_key___" => array('merge' => false)    
+);
 
 /**
  * SEO
@@ -58,5 +56,47 @@ $config['components'] = [
 // Тег используемый для заголовков топиков
 $config['view']['seo']['topic_heading'] = 'h1';
 $config['view']['seo']['topic_heading_list'] = 'h2';
+
+$config['block']['userProfile'] = array(
+    'action' => array(
+        'profile' => [
+            '{profile}'
+        ]
+    ),
+    'blocks' => array(
+        'left' => array(
+            'component@user.block-photo'    => array('priority' => 100),
+            'menuProfile'      => array('priority' => 99),
+            'component@user.block-actions'  => array('priority' => 98),
+        )
+    )
+);
+
+$config['block']['moderation'] = array(
+    'action' => array(
+        'moderation' => [
+            '{moderation}'
+        ]
+    ),
+    'blocks' => array(
+        'left' => array(
+            'menu' => ['priority' => 99, 'params' => ['name' => 'moderation', "template" => "profile"]]
+        )
+    )
+);
+
+$config['block']['settingsProfile'] = array(
+    'action' => array(
+        'profile' => [
+            '{settings}','{notices}','{security}'
+        ]
+    ),
+    'blocks' => array(
+        'left' => array(
+            'menuSettings'     => array('priority' => 100)
+            
+        )
+    )
+);
 
 return $config;

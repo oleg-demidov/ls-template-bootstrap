@@ -85,11 +85,15 @@
                         {if $item.url}
                             <a class="dropdown-item {$item.classes} " href="{$item.url}">
                                 {$item.text}
-                                {if $item.badge}
-                                    {if is_array($item.badge)}
-                                        {component "bs-badge" prrams=$item.badge}
+                                
+                                {if $item.count}
+                                    {if is_array($item.count)}
+                                        {component "bs-badge" params=$item.count}
                                     {else}
-                                        {component "bs-badge" text=$item.badge bmods="primary"}
+                                        {component "bs-badge" 
+                                            text        = $item.count 
+                                            attributes  = ["data-count-{$item.name}" => true] 
+                                            bmods       = "primary"}
                                     {/if}                    
                                 {/if}
                             </a>

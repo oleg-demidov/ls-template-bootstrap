@@ -4,9 +4,8 @@
 
 {* Название компонента *}
 {$component = 'editor'}
-{component_define_params params=[ 'form', 'placeholder', 'isDisabled', 'entity', 'entityScenario', 'entityField', 'escape', 'data', 'label', 'name',
-    'rules', 'value', 'id', 'inputClasses', 'inputAttributes', 'inputData', 'mods', 'classes', 'attributes', 'note', 'rows', 'type', 'set', 'help', 
-    'mediaTargetType', 'mediaTargetId' ]}
+{component_define_params params=[  'placeholder', 'label', 'name', 'rows', 
+     'value', 'id', 'inputClasses', 'inputAttributes',  'bmods', 'classes', 'attributes', 'note',  'type', 'set']}
 
 {* Получаем тип редактора *}
 {$type = ( ( $type ) ? $type : ( Config::Get('view.wysiwyg') ) ? 'visual' : 'markup' )}
@@ -16,16 +15,16 @@
 {$_uid = $id|default:($component|cat:mt_rand())}
 
 {* Уникальный ID окна загрузки файлов *}
-{$_mediaUid = "media{$_uid}"}
+{$_mediaUid = "mediaModal"}
 
 
 {**
  * Textarea
  *}
 {function editor_textarea}
-    {component 'field.textarea'
+    {component 'bs-form.textarea'
         id = $_uid
-        inputAttributes = array_merge( $inputAttributes|default:[], [ 'data-editor-type' => $type, 'data-editor-set' => $set, 'data-editor-media' => $_mediaUid ] )
+        attributes = array_merge( $inputAttributes|default:[], [ 'data-editor-type' => $type, 'data-editor-set' => $set, 'data-editor-media' => $_mediaUid ] )
         rows = $rows|default:10
         params = $params}
 {/function}
@@ -59,13 +58,3 @@
         {/if}
     {/hookb}
 {/if}
-
-{* Управление медиа-файлами *}
-{component 'media'
-    sMediaTargetType = $mediaTargetType
-    sMediaTargetId   = $mediaTargetId
-    id               = $_mediaUid
-    assign           = 'mediaModal'}
-
-{* Добавляем модальное окно (компонент media) в конец лэйаута чтобы избежать вложенных форм *}
-{$sLayoutAfter = "$sLayoutAfter $mediaModal" scope='root'}

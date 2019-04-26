@@ -10,7 +10,7 @@
  
 
 
-{component_define_params params=[ 'text', 'url', 'active', 'disabled' , 'bmods', 'bg', 'classes', 'attributes', 
+{component_define_params params=[ 'text', 'url', 'active','icon', 'disabled' , 'bmods', 'bg', 'classes', 'attributes', 
     'type', 'value', 'tag', 'com', 'popover', 'badge' ]}
 
 {* Название компонента *}
@@ -21,23 +21,39 @@
 
 {block 'button_content'}{strip}
     {if $url}
-        <a class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {bs_popover popover=$popover} {$classes}" 
+        <a class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" 
+           {if $popover}{component "bs-popover" params=$popover} {/if} 
            {cattr list=$attributes} {if $disabled}aria-disabled="true"{/if} href="{$url}" role="button">{$text}</a>
     {else}
         {if $tag != "input"}
-            <{$tag} type="{$type|default:"button"}" class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {bs_popover popover=$popover}
+            <{$tag} type="{$type|default:"button"}" class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" 
+                {if $popover}
+                    {if is_array($popover)}
+                        {component "bs-popover" params=$popover}
+                    {else}
+                        {component "bs-popover" content=$popover}
+                    {/if}
+                {/if} 
                 {cattr list=$attributes}>
-                {$text}
+                {if $icon}
+                    {if is_array($icon)}
+                        {component "bs-icon" params=$icon}
+                    {else}
+                        {component "bs-icon" icon=$icon display='s' classes="{if $text}mr-1{/if}"}
+                    {/if}                    
+                {/if}
+                <span btn-text>{$text}</span>
                 {if $badge}
                     {if is_array($badge)}
-                        {component "bs-badge" prrams=$badge}
+                        {component "bs-badge" params=$badge}
                     {else}
-                        {component "bs-badge" text=$badge bmods="primary"}
+                        {component "bs-badge" text=$badge bmods=$bmods}
                     {/if}                    
                 {/if}
             </{$tag}>
         {else}
-            <input class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" {bs_popover popover=$popover} 
+            <input class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" 
+                   {if $popover}{component "bs-popover" params=$popover}{/if}
                 {cattr list=$attributes} type="{$type|default:"button"}" value="{$value}">
         {/if}
     {/if}    

@@ -1,0 +1,20 @@
+{
+    "name": "user",
+    "version": "1.0.0",
+    "dependencies": {
+    },
+    "templates": {
+        "user": "user.tpl",
+        "nav":"nav.tpl",
+        "photo":"photo.tpl",
+        "item":"user-item.tpl",
+        "list":"user-list.tpl",
+        
+        "block-nav":"blocks/block-nav.tpl",
+        "block-actions":"blocks/block-actions.tpl",
+        "block-photo":"blocks/block-photo.tpl",
+        "block-settings-nav":"blocks/block-settings-nav.tpl"
+    },
+    "styles": {
+    }
+}
