@@ -40,6 +40,8 @@
             
             onSelectFile:null,
             
+            onInsertEditor:null,
+            
             field:null
         },
         
@@ -98,12 +100,12 @@
             }
             this.insertEditor(file);
             
-            this._trigger('onSelectFile', file);
+            this._trigger('onSelectFile', null, file);
         },
         
         insertEditor:function(file){
             this._load( 'insert' , { ids: [file.data('id')] }, function( response ) {
-                this.elements.editor.length && this.elements.editor.lsEditor( 'insert', response.sTextResult );
+                this._trigger('onInsertEditor', null, response.sTextResult);
                 this.hide();
             }.bind(this));
         },
