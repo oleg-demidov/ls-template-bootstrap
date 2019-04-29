@@ -157,7 +157,6 @@ jQuery(document).ready(function($){
      */
     $('[data-type="pagination"]').bsPagination();
    
-    $('.js-field-star').bsFieldStar();
 
     // Хук конца инициализации javascript-составляющих шаблона
     ls.hook.run('ls_template_init_end',[],window);
