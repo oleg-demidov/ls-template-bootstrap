@@ -19,30 +19,19 @@
          */
         options: {
             
-            // Ссылки
-            urls: {
-                insert:aRouter.ajax + "media/submit-insert"
-            },
+            
 
             // Селекторы
             selectors: {
-                editor: '@.js-editor-default',
                 uploader: '[data-type="uploader"]',
                 library: '[data-type="library"]',
-                fields: '@[data-type="media-field"]',
-                btn: '[data-type="btn-modal"]',
                 modal:'@#mediaModal'
             },
 
             uploader_options: {},
 
-            params: {},
+            params: {}
             
-            onSelectFile:null,
-            
-            onInsertEditor:null,
-            
-            field:null
         },
         
         
@@ -55,11 +44,9 @@
          */
         _create: function () {
             this._super();
-            
-            this.elements.fields.bsMediaField();
-                        
-            this.attachFields(this.elements.fields);
-
+            /*
+             * Инит библиотеки
+             */
             this.elements.library.bsLibrary();
             
             this.elements.modal.on('show.bs.modal', function(e){
@@ -110,7 +97,7 @@
             }.bind(this));
         },
         
-        show:function(){
+        show:function(callback){
             this.elements.modal.modal('show');
         },
         
