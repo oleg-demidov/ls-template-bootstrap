@@ -8,27 +8,7 @@
         <form  data-form-validate data-form-ajax data-url="{$oUserProfile->getProfileUrl()}/settings/profile-ajax" novalidate>
             {$oUserProfile->_setValidateScenario('profile_settings')}
             
-            {* Фото*}
-
-            {$medias = []}
-            {$aMedias = $oUserProfile->getMedia('user_photo')}
-            {foreach $aMedias as $oMedia}
-                {$medias[] = [obj => $oMedia, size => 'photo']}
-            {/foreach}
-
-            {component "bs-media.field" 
-                medias  = $medias
-                crop    = true
-                dataCrop  = [
-                    'aspect-ratio' => '1'
-                ]
-                validate = [
-                    entity => $oUserProfile,
-                    field => 'photo_count'
-                ]
-                name    = 'photo'
-                label   = $aLang.user.settings.profile.form.photo.label 
-                text    = $aLang.user.settings.profile.form.photo.text         }
+            
                 
             {* Имя Фамилия *}
             {component 'bs-form' 

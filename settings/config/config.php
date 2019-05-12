@@ -8,7 +8,6 @@ $config['view']['grid']['collapse'] = 'sm'; // Граница сворачива
 // Подключение скриптов шаблона
 $config['head']['template']['js'] = array(
     "https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js",
-    "___path.skin.web___/themes/___view.theme___/js/bootstrap.min.js",
     '___path.skin.assets.web___/js/init.js',
 );
 
@@ -16,7 +15,6 @@ $config['head']['template']['js'] = array(
 $config['head']['template']['css'] = array(
     "___path.skin.assets.web___/css/layout.css",
     "___path.skin.assets.web___/css/print.css",
-    "___path.skin.web___/themes/___view.theme___/css/bootstrap.min.css"
 );
 
 $config['view']['bs_themes'] = [
@@ -42,7 +40,7 @@ $config['components'] = [
 
     //Компоненты шаблона
     'bs-dropdown', 'bs-form', 'bs-media', 'bs-pagination', 'bs-crop', 'rating', 'bs-nav', 'ajax', 'bs-icon', 'bs-autocomplete', 
-    'bs-popover', 'bs-text', 'bs-button'
+    'bs-popover', 'bs-text', 'bs-button', 'bootstrap'
 ];
 
 $config['head']['default']['js'] = array(
