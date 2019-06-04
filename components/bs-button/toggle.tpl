@@ -8,14 +8,24 @@
 
 {$component = "btn"}
  
-{component_define_params params=[ 'items', 'classes', 'attributes' ]}
+{component_define_params params=[ 'items', 'classes', 'attributes', 'name', 'bmods' ]}
 
 {block 'button_toggle_content'}
-    <div class="btn-group btn-group-toggle {$classes}" {cattr list=$attributes} data-toggle="buttons">
+    <div class="btn-group btn-group-toggle {cmods name=$component mods=$bmods delimiter="-"} {$classes}" 
+         {cattr list=$attributes} data-toggle="buttons">
         {foreach $items as $item}
-            <label class="{$component} {bmods bmods=$item.bmods} {$item.classes}" {cattr list=$item.attributes}>
-                <input type="radio" name="{$item.name}" id="{$item.id}"
-                       autocomplete="off" {if $item.checked}checked{/if}> {$item.text}
+            <label class="{$component} {cmods name=$component mods=$item.bmods delimiter="-"} {$item.classes} {if $item.checked}active{/if}" 
+                   {cattr list=$item.attributes}>
+                <input type="radio" name="{$name}" value="{$item.value}" id="{$item.id}"
+                       autocomplete="off" {if $item.checked}checked{/if}> 
+                {if $item.icon}
+                    {if is_array($item.icon)}
+                        {component "bs-icon" params=$item.icon}
+                    {else}
+                        {component "bs-icon" icon=$item.icon display='s' classes="{if $text}mr-1{/if}"}
+                    {/if}                    
+                {/if}
+                {$item.text}
             </label>
         {/foreach}
     </div>   

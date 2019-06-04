@@ -43,7 +43,6 @@ jQuery(document).ready(function($){
      */
     $('[data-toggle="popover"]').popover();
     $('[data-toggle="tooltip"]').tooltip();
-    $('[data-btn]').bsButton();
      
     /*
      * Modals
@@ -146,7 +145,8 @@ jQuery(document).ready(function($){
     // Подгрузка ajax
     $('[data-ajax-list]').bsAjaxList();
     
-    $('[data-ajax-btn]').bsAjaxButton();
+    $('[data-ajax-btn]').bsAjaxButton()
+    $('.btn').bsButton();
     
     // Ajax поиск
     $('[data-ajax-search]').bsAjaxSearch();

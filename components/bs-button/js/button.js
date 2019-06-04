@@ -14,7 +14,7 @@
             },
             icon_classes:null,
             classes:{
-                iconLoader:"fa fa-circle-o-notch fa-spin mr-1"
+                iconLoader:"fa fa-redo-alt fa-spin mr-1"
             }
         },
         

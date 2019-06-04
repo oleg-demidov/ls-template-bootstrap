@@ -9,7 +9,10 @@
         <div class="col-md-7">
             <h5 class="text-center">Fend помогает получить отзывы и предложения о вашей работе</h5>
             <h6 class="text-center mt-3">Оставлять отзывы и ставить рейтинг людям и компаниям</h6>
-
+            {component 'bs-button.toggle' items=[
+        [icon => "th-large", url => '#1', bmods => "success"], 
+        [icon => "th-list", url => '#2', bmods => "secondary"]] 
+    }
             {component "tinymce"}
         </div>
         <div class="col-md-5 d-flex  justify-content-center mt-md-0 mt-4">
