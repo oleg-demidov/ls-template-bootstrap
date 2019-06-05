@@ -7,9 +7,76 @@
  */
 
 jQuery(document).ready(function($){
+    
+    ls.registry.set('component.tinimce.plugins', []);
+    ls.registry.set('component.tinimce.toolbar', []);
+    
     // Хук начала инициализации javascript-составляющих шаблона
     ls.hook.run('ls_template_init_start',[],window);
     
+    /*
+     * Инициализация tinymce
+     */
+    let plugins = [
+        'autoresize',
+        'code',
+        'codesample',
+        'emoticons',
+        'hr',
+        'image',
+        'imagetools',
+        'insertdatetime',
+        'link',
+        'lists',
+        'media',
+        'paste',
+        'preview',
+        'print',
+        'spellchecker',
+        'table',
+        'textcolor',
+        'wordcount'
+    ];
+
+    let toolbar = [
+        'styleselect', 
+        '|', 
+        'bold', 
+        'italic', 
+        'strikethrough', 
+        'underline',
+        'blockquote',
+        'table',
+        '|',
+        'bullist',
+        'numlist',
+        '|',
+        'link',
+        'media',
+        'removeformat',
+        'pagebreak',
+        'code',
+        'fullscreen'
+    ];
+
+    plugins = plugins.concat(ls.registry.get('component.tinimce.plugins'));
+
+    toolbar = toolbar.concat(ls.registry.get('component.tinimce.toolbar'));
+
+    let options = {
+        menubar: false,
+        selector: '[data-editor="tinymce"]',
+        plugins: plugins.join(' ') ,
+//                plugins: "autoresize autosave bbcode charmap code codesample colorpicker contextmenu directionality emoticons fullpage fullscreen 
+//                help hr image imagetools importcss insertdatetime legacyoutput link lists media nonbreaking noneditable pagebreak paste preview print save 
+//                searchreplace spellchecker tabfocus table template textcolor textpattern toc visualblocks visualchars wordcount",
+        language: LANGUAGE,
+        toolbar: toolbar.join(' ') 
+    };
+
+
+    tinymce.init(options);
+        
     /**
      * Параметры для инициации редактора
      */
@@ -43,14 +110,13 @@ jQuery(document).ready(function($){
      */
     $('[data-toggle="popover"]').popover();
     $('[data-toggle="tooltip"]').tooltip();
+    $('.btn').bsButton();
      
     /*
      * Modals
      */
     $('[data-type="crop-modal"]').bsCropModal();
-    
-    $('.js-modal-media').bsMedia();
-    
+        
      // Отправка формы в модальном окне
     $('[data-modal-submit]').on('click', function(e){
         $(this).closest('.modal-content').find('form').submit();
@@ -146,7 +212,6 @@ jQuery(document).ready(function($){
     $('[data-ajax-list]').bsAjaxList();
     
     $('[data-ajax-btn]').bsAjaxButton()
-    $('.btn').bsButton();
     
     // Ajax поиск
     $('[data-ajax-search]').bsAjaxSearch();

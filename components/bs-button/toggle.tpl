@@ -26,6 +26,7 @@
                     {/if}                    
                 {/if}
                 {$item.text}
+
             </label>
         {/foreach}
     </div>   
