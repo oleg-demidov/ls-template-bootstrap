@@ -13,7 +13,7 @@
 {block 'button_toggle_content'}
     <div class="btn-group btn-group-toggle {$classes}" {cattr list=$attributes} data-toggle="buttons">
         {foreach $items as $item}
-            <label class="{$component} {bmods bmods=$item.bmods} {$item.classes}" {cattr list=$item.attributes}>
+            <label class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$item.classes}" {cattr list=$item.attributes}>
                 <input type="radio" name="{$item.name}" id="{$item.id}"
                        autocomplete="off" {if $item.checked}checked{/if}> {$item.text}
             </label>
