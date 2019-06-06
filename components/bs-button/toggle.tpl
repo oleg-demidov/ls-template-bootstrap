@@ -16,7 +16,7 @@
         {foreach $items as $item}
             <label class="{$component} {cmods name=$component mods=$item.bmods delimiter="-"} {$item.classes} {if $item.checked}active{/if}" 
                    {cattr list=$item.attributes}>
-                <input type="radio" name="{$name}" value="{$item.value}" id="{$item.id}"
+                <input type="radio" name="{$name}" value="{$item.value}" {if $item.id}id="{$item.id}"{/if}
                        autocomplete="off" {if $item.checked}checked{/if}> 
                 {if $item.icon}
                     {if is_array($item.icon)}
