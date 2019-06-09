@@ -16,7 +16,7 @@
 
 {$component = "form-control"}
 {component_define_params params=[ 'bmods', 'bg', 'validate', 'classes', 'popover', 'attributes', 'name', 'id', 'label', 'placeholder', 'desc', 'value', 'type',
-    'classesGroup', 'attributesGroup', 'readonly', 'classesLabel', 'classesDesc', 'custom', 'size']}
+    'classesGroup', 'attributesGroup', 'readonly', 'classesLabel', 'classesDesc', 'custom', 'size', 'prepend']}
 
 {if $custom}
     {$component = "custom-control"}
@@ -97,16 +97,21 @@
             <small id="{$attributes.id}Help" class="form-text text-muted {$classesDesc}">{$desc}</small>
         {/if}
     {/block}
-    <div class="invalid-feedback">
-        {$validate.msgError|default:$msg}       
-    </div>
-    <div class="valid-feedback">
-        {$validate.msgSuccess}
-    </div>
+    
+    {if !$prepend}
+        <div class="invalid-feedback">
+            {$validate.msgError|default:$msg}       
+        </div>
+        <div class="valid-feedback">
+            {$validate.msgSuccess}
+        </div>
+    {/if}
+    
 {/capture}
 
 {block name="out_content"}
     {component "bs-form.group" 
+        prepend=$prepend
         popover=$popover
         custom=$custom 
         classes=$classesGroup 

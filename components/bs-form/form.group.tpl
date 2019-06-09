@@ -8,7 +8,7 @@
  * 
  *}
 
-{component_define_params params=[ 'bmods', 'bg', 'classes', 'attributes', 'content', 'component', 'popover',  'componentGroup']}
+{component_define_params params=[ 'bmods', 'bg', 'classes', 'attributes', 'content', 'component', 'popover',  'componentGroup', 'prepend']}
 
 {if $custom}
     {$classes = "{$classes} custom-{$type}"}
@@ -17,11 +17,24 @@
     {$component = {$componentGroup|default:"form-group"}}
 {/if}
 
+{if $prepend}
+    {$component = "input-group"}
+{/if}
+
 {block 'form_group_options'}{/block}
 
 {block 'form_group_content'}
     <div class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" 
-         {if $popover}{component "bs-popover" params=$popover} {/if} {cattr list=$attributes}>
+        {if $popover}{component "bs-popover" params=$popover} {/if} {cattr list=$attributes}>
+        
+        {if $prepend}
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    {$prepend}
+                </div>
+            </div>
+        {/if}
+
         {if is_array($content)}
             {foreach $content as $item}
                 {$item}
