@@ -13,7 +13,7 @@
 {block 'button_group_options'}{/block}
 
 {block 'button_group_content'}{strip}
-    <div class="btn-group {$classes} {bmods bmods=$bmods}" {cattr list=$attributes} role="group" >
+    <div class="btn-group {$classes} {cmods name=$component mods=$item.bmods delimiter="-"}" {cattr list=$attributes} role="group" >
         {foreach $items as $item}
             {if is_array($item)}
                 {component 'bs-button' params=$item}

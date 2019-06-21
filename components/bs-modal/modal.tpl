@@ -13,9 +13,13 @@
  *}
 {$component="modal"}
 
-{component_define_params params=[ 'showFooter', 'header', 'classesBody', 'closed', 'content', 'footer', 'closeText', 'primaryButton', 'html', 'id', 'labelledby', 'effect', 'centered']}
+{component_define_params params=[ 'showFooter', 'header', 'classesBody', 'closed', 'backdrop' , 'content', 'footer', 'closeText', 'primaryButton', 'html', 'id', 'labelledby', 'effect', 'centered']}
 
 {$closed =  $closed|default:true}
+{if $backdrop}
+    {$attributes["data-backdrop"]  = $backdrop}
+{/if}
+
 {$attributes.id=$id}
 {$attributes.tabindex="-1"}
 {$attributes.role="dialog"}

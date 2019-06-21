@@ -38,10 +38,10 @@ $config['components'] = [
     // Базовые компоненты
     'ls-vendor', 'ls-core', 'ls-component', 'editor', 'notification', 'performance', 'confirm', 'lightbox',
     
-    'bootstrap',
+    'bootstrap','tinymce',
     
     //Компоненты шаблона
-    'bs-dropdown', 'bs-form', 'bs-media', 'bs-pagination', 'bs-crop', 'rating', 'bs-nav', 'ajax', 'bs-icon', 'bs-autocomplete', 
+    'bs-dropdown', 'bs-form', 'bs-media', 'bs-pagination', 'rating', 'bs-nav', 'ajax', 'bs-icon', 'bs-autocomplete', 
     'bs-popover', 'bs-text', 'bs-button'
 ];
 

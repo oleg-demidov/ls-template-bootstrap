@@ -33,6 +33,7 @@
     
 {block name="out_content"}
     {component "bs-form.group" 
+        prepend=$prepend
         custom=$customfalse 
         classes=$classesGroup 
         bmods=$bmodsGroup 

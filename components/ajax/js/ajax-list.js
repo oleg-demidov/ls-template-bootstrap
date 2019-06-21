@@ -68,7 +68,7 @@ $.widget( "livestreet.bsAjaxList", $.livestreet.lsComponent, {
         
         let fields = this.elements.container.find('[data-type="media-field"]')
         fields.bsMediaField();
-        $('.js-modal-media').bsMedia('attachFields',fields );
+        //$('.js-modal-media').bsMedia('attachFields',fields );
         
         this.elements.container.find('[data-ajax-btn]').bsAjaxButton();
         
