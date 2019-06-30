@@ -8,7 +8,7 @@
         <form  data-form-validate data-form-ajax data-url="{$oUserProfile->getProfileUrl()}/settings/profile-ajax" novalidate>
             {$oUserProfile->_setValidateScenario('profile_settings')}
             
-            
+            {hook run="profile_settings_start" oUser=$oUserProfile}
                 
             {* Имя Фамилия *}
             {component 'bs-form' 
@@ -91,6 +91,8 @@
                     entity  => $oUserProfile
                 ]
                 }
+                
+            {hook run="profile_settings_end" oUser=$oUserProfile}
 
             <div class="d-flex justify-content-center">
                 {component 'bs-button' 
@@ -110,10 +112,5 @@
             content => $smarty.capture.form
         ]
     ]}
-    
-{/block}
-
-{block "layout_modals" append}
-    {component "bs-crop.modal"}
     
 {/block}

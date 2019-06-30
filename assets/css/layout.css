@@ -7,3 +7,7 @@
 .test-ask .invalid-feedback, .test-ask .valid-feedback{
     margin-top: 0;
 }
+
+.ls-sidebar>div:not(last-child){
+    margin-bottom: 15px;
+}

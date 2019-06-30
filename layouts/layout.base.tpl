@@ -97,7 +97,7 @@
             *}
             {if $layoutShowSidebar}
                 <div class="col-12 col-{$breakpoint}-4 col-xl-3 layout-sidebar pr-{$breakpoint}-0">
-                    <div class="mx-2">
+                    <div class="mx-2 ls-sidebar">
                         {$layoutSidebarBlocks}
                     </div>
                 </div>
@@ -208,10 +208,10 @@
     * Тулбар
     * Добавление кнопок в тулбар
     *}
-    {add_block group='toolbar' name='component@toolbar-scrollup.toolbar.scrollup' priority=-100}
+{*    {add_block group='toolbar' name='component@toolbar-scrollup.toolbar.scrollup' priority=-100}*}
 
     {* Подключение тулбара *}
-    {component 'toolbar' classes='js-toolbar-default' items={show_blocks group='toolbar'}}
+{*    {component 'toolbar' classes='js-toolbar-default' items={show_blocks group='toolbar'}}*}
 
     {hook run='layout_body_end'}    
 

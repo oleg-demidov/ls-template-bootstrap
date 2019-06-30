@@ -8,6 +8,7 @@ $config['view']['grid']['collapse'] = 'sm'; // Граница сворачива
 // Подключение скриптов шаблона
 $config['head']['template']['js'] = array(
     //"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js",
+    "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" => array('merge' => false),
     '___path.skin.assets.web___/js/init.js',
 );
 
@@ -44,10 +45,6 @@ $config['components'] = [
     'bs-dropdown', 'bs-form', 'bs-media', 'bs-pagination', 'rating', 'bs-nav', 'ajax', 'bs-icon', 'bs-autocomplete', 
     'bs-popover', 'bs-text', 'bs-button'
 ];
-
-$config['head']['default']['js'] = array(
-    //"https://www.google.com/recaptcha/api.js?render=___module.validate.recaptcha.site_key___" => array('merge' => false)    
-);
 
 /**
  * SEO

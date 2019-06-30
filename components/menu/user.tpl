@@ -19,10 +19,6 @@
     url     = '#'
 }}
 
-{capture name="text"}
-    <img class='rounded-circle mr-1' src='{$oUserCurrent->getProfileAvatar()}' style='width:25px;' alt='{$oUserCurrent->getLogin()}'>
-    <span class="d-none d-md-inline">{$oUserCurrent->getLogin()}</span>
-{/capture}
 
 {component 'bs-nav' 
     bmods="fill"
@@ -31,7 +27,7 @@
         [ 
             name => 'items',  
             classes => "text-nowrap", 
-            text => $smarty.capture.text,
+            text => {component 'user.inline' oUser=$oUserCurrent},
             menu => $params 
         ],
         

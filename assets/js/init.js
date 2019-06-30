@@ -15,17 +15,7 @@ jQuery(document).ready(function($){
     ls.hook.run('ls_template_init_start',[],window);
     
         
-    /**
-     * Параметры для инициации редактора
-     */
-//    ls.registry.set('component.tinimce.options', {
-//        selector: '[data-tinymce]',
-//        plugins: 'fullscreen codesample code',
-//
-//    });
-    
-//    console.log(ls.registry.get('component.tinimce.options').plugins.split(' '));
-    
+       
     /*
      *  Код для реализации dropdown-submenu
      */

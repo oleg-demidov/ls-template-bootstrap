@@ -13,6 +13,7 @@
     {hook run='form_login_begin'}
     {* Логин или Email*}
     {component 'bs-form' 
+        classes     = "mt-3"
         template    = 'text' 
         name        = "mail_login"
         placeholder = $aLang.auth.login.form.fields.login_or_email.placeholder

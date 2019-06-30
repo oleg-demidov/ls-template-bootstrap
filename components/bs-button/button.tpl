@@ -23,7 +23,16 @@
     {if $url}
         <a class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" 
            {if $popover}{component "bs-popover" params=$popover} {/if} 
-           {cattr list=$attributes} {if $disabled}aria-disabled="true"{/if} href="{$url}" role="button">{$text}</a>
+           {cattr list=$attributes} {if $disabled}aria-disabled="true"{/if} href="{$url}" role="button">
+            {if $icon}
+                {if is_array($icon)}
+                    {component "bs-icon" params=$icon}
+                {else}
+                    {component "bs-icon" icon=$icon display='s' classes="{if $text}mr-1{/if}"}
+                {/if}                    
+            {/if}
+            {$text}
+        </a>
     {else}
         {if $tag != "input"}
             <{$tag} type="{$type|default:"button"}" class="{$component} {cmods name=$component mods=$bmods delimiter="-"} {$classes}" 

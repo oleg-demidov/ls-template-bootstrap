@@ -1,4 +1,4 @@
-var onloadCallback = function() {
+ var onloadCallback = function() {  console.log('okr2')
     var x = document.getElementsByClassName("g-recaptcha");
     
     var i;

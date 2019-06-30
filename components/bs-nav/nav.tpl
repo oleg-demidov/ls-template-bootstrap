@@ -49,8 +49,8 @@
 
                     <li class="nav-item  {$item.liClasses}">
                         <a class="nav-link  {$itemsClasses} {$item.classes}  {if $isActive}active{/if}
-                             {if $item.disabled}disabled{/if}" href="{$item.url}"
-                            {cattr list=$item.attributes}>
+                             {if $item.disabled}disabled{/if}" href="{$item.url}" {cattr list=$item.attributes}>
+                             
                             {if $item.icon}
                                 {if is_array($item.icon)}
                                     {component "bs-icon" params=$item.icon}
