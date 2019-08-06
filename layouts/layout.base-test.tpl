@@ -34,6 +34,12 @@
 {/block}
 
 {block 'layout_body'}
+    {*
+    *  TODO:Это здесь по причине, что
+    *  невозможно совершить вложение компонентов 
+    *  наследуемых от одного компонента
+    *}
+   
 
     {hook run='layout_body_begin'}
 
@@ -239,7 +245,8 @@
 
         
     {/block}
-    
+
+
     {hook run='layout_body_end'}    
 
 {/block}

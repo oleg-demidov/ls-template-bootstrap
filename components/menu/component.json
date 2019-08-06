@@ -1,8 +1,7 @@
 {
     "name": "menu",
     "version": "1.0.0",
-    "dependencies": {
-    },
+    
     "templates": {
         "menu": "menu.tpl",
         "main":"main.tpl",

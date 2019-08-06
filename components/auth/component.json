@@ -1,11 +1,8 @@
 {
     "name": "auth",
     "version": "1.0.0",
-    "dependencies": {
-        "css-reset": "*",
-        "form": "*",
-        "modal": "*"
-    },
+    "dependencies": [
+    ],
     "templates": {
         "login": "auth.login.tpl",
         "reactivation": "auth.reactivation.tpl",

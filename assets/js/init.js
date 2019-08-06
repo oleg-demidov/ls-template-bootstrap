@@ -143,17 +143,16 @@ jQuery(document).ready(function($){
     // Ajax поиск
     $('[data-ajax-search]').bsAjaxSearch();
     
-    
-    
+    /*
+     * Button
+     */
+    $('.btn').bsButton();
    
     /*
      * Автозавершение
      */
     $('[data-autocomplete]').bsAutocomplete();
-    /**
-     * Editor
-     */
-    $( '.js-editor-default' ).lsEditor();
+    
     
     
     /*

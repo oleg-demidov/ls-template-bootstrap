@@ -4,7 +4,6 @@
  * @param string $redirectUrl
  *}
 
-{$redirectUrl = $smarty.local.redirectUrl|default:$PATH_WEB_CURRENT}
 
 
 {hook run='login_begin'}

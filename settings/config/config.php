@@ -8,14 +8,21 @@ $config['view']['grid']['collapse'] = 'sm'; // Граница сворачива
 // Подключение скриптов шаблона
 $config['head']['template']['js'] = array(
     //"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js",
-    "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" => array('merge' => false),
-    '___path.skin.assets.web___/js/init.js',
+    "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" => array(
+        'merge' => false,
+        'remote' => true
+        ),
+    '___path.skin.assets.server___/js/init.js' =>[
+        'dependencies' => [
+            'component@ls-core.hook'
+        ]
+    ],
 );
 
 // Подключение стилей шаблона
 $config['head']['template']['css'] = array(
-    "___path.skin.assets.web___/css/layout.css",
-    "___path.skin.assets.web___/css/print.css",
+    "___path.skin.assets.server___/css/layout.css",
+    "___path.skin.assets.server___/css/print.css",
 );
 
 $config['view']['bs_themes'] = [
@@ -37,12 +44,12 @@ $config['view']['bs_theme'] = $config['view']['bs_themes'][$theme];
 
 $config['components'] = [
     // Базовые компоненты
-    'ls-vendor', 'ls-core', 'ls-component', 'editor', 'notification', 'performance', 'confirm', 'lightbox',
+    'ls-vendor', 'ls-core', 'ls-component', 'notification', 'performance', 'confirm', 'lightbox',
     
     'bootstrap','tinymce',
     
     //Компоненты шаблона
-    'bs-dropdown', 'bs-form', 'bs-media', 'bs-pagination', 'rating', 'bs-nav', 'ajax', 'bs-icon', 'bs-autocomplete', 
+    'bs-dropdown', 'bs-form', 'bs-pagination', 'bs-nav', 'ajax', 'bs-icon', 'bs-autocomplete', 
     'bs-popover', 'bs-text', 'bs-button'
 ];
 

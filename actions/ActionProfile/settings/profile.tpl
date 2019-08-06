@@ -3,12 +3,21 @@
  *}
 {extends 'layouts/layout.base.tpl'}
 
+{block 'layout_page_title'}
+    <h2>
+        {$aLang.user.settings.profile.title}
+    </h2>
+{/block}
+
 {block 'layout_content'}
     {capture name="form"}
         <form  data-form-validate data-form-ajax data-url="{$oUserProfile->getProfileUrl()}/settings/profile-ajax" novalidate>
             {$oUserProfile->_setValidateScenario('profile_settings')}
             
+            {* Фото*}
+            
             {hook run="profile_settings_start" oUser=$oUserProfile}
+
                 
             {* Имя Фамилия *}
             {component 'bs-form' 
@@ -38,47 +47,45 @@
                     only_change => true
                 ]}
                 
-            {if $oUserProfile->isRole('company')}
 
-                {* Телефон *}
-                {component 'bs-form' 
-                    template    = 'text' 
-                    name        = "phone"
-                    label       = $aLang.user.settings.profile.form.phone.label
-                    placeholder = $aLang.user.settings.profile.form.phone.placeholder
-                    type        = "text"
-                    value       = $oUserProfile->getPhone()
-                    validate       = [ 
-                        entity  => $oUserProfile
-                    ]
-                    }
+            {* Телефон *}
+            {component 'bs-form' 
+                template    = 'text' 
+                name        = "phone"
+                label       = $aLang.user.settings.profile.form.phone.label
+                placeholder = $aLang.user.settings.profile.form.phone.placeholder
+                type        = "text"
+                value       = $oUserProfile->getPhone()
+                validate       = [ 
+                    entity  => $oUserProfile
+                ]
+                }
 
-                {* Сайт *}
-                {component 'bs-form' 
-                    template    = 'text' 
-                    name        = "site"
-                    label       = $aLang.user.settings.profile.form.site.label
-                    placeholder = $aLang.user.settings.profile.form.site.placeholder
-                    type        = "text"
-                    value       = $oUserProfile->getSite()
-                    validate       = [ 
-                        entity  => $oUserProfile
-                    ]
-                    }
+            {* Сайт *}
+            {*{component 'bs-form' 
+                template    = 'text' 
+                name        = "site"
+                label       = $aLang.user.settings.profile.form.site.label
+                placeholder = $aLang.user.settings.profile.form.site.placeholder
+                type        = "text"
+                value       = $oUserProfile->getSite()
+                validate       = [ 
+                    entity  => $oUserProfile
+                ]
+                }*}
 
-                {* Адресс *}
-                {component 'bs-form' 
-                    template    = 'text' 
-                    name        = "address"
-                    label       = $aLang.user.settings.profile.form.address.label
-                    placeholder = $aLang.user.settings.profile.form.address.placeholder
-                    type        = "text"
-                    value       = $oUserProfile->getAddress()
-                    validate    = [ 
-                        entity  => $oUserProfile
-                    ]
-                    }                               
-            {/if}
+            {* Адресс *}
+            {component 'bs-form' 
+                template    = 'text' 
+                name        = "address"
+                label       = $aLang.user.settings.profile.form.address.label
+                placeholder = $aLang.user.settings.profile.form.address.placeholder
+                type        = "text"
+                value       = $oUserProfile->getAddress()
+                validate    = [ 
+                    entity  => $oUserProfile
+                ]
+                }                               
             
             {* О себе *}
             {component 'bs-form' 
@@ -91,6 +98,7 @@
                     entity  => $oUserProfile
                 ]
                 }
+           
                 
             {hook run="profile_settings_end" oUser=$oUserProfile}
 

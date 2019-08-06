@@ -1,9 +1,7 @@
 {
     "name": "slider",
     "version": "1.0.0",
-    "dependencies": {
-        "css-reset": "*"
-    },
+    
     "scripts": {
         "vendor-fotorama": {
             "file": "vendor/fotorama/fotorama.js",
